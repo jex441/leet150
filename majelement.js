@@ -1,4 +1,5 @@
-var majorityElement = function (nums) {
+// Brute force:
+const majorityElement = function (nums) {
 	let maj = nums.length / 2;
 	let map = {};
 
@@ -15,4 +16,19 @@ var majorityElement = function (nums) {
 			return parseInt(key);
 		}
 	}
+};
+
+// Optimal:
+const majorityElement2 = function (nums) {
+	let count = 0;
+	let candidate = null;
+
+	for (let num of nums) {
+		if (count === 0) {
+			candidate = num;
+		}
+		count += num === candidate ? 1 : -1;
+	}
+
+	return candidate;
 };
